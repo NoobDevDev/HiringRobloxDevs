@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Service - Roblox Developers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: #e5e5e5; /* softer grey similar to ChatGPT */
+        }
+
+        .password-screen, .main-content {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .password-screen {
+            background: #fff;
+            color: #333;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .main-content {
+            background: #fff;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        input[type="password"] {
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 250px;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin-top: 15px;
+            background: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #005bb5;
+        }
+
+        .visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .welcome-label {
+            position: absolute;
+            top: 20px;
+            width: 90%;
+            text-align: center;
+            font-size: 18px;
+            color: #444;
+        }
+
+        #errorMsg {
+            color: #e74c3c;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Welcome label -->
+    <div class="welcome-label">
+        Welcome, please type the password given by @noobdevv on Discord to join the Program
+    </div>
+
+    <!-- Password screen -->
+    <div class="password-screen" id="passwordScreen">
+        <h1>Enter Password to Continue</h1>
+        <input type="password" id="passwordInput" placeholder="Password">
+        <button onclick="checkPassword()">Enter</button>
+        <p id="errorMsg">Incorrect password. Try again.</p>
+    </div>
+
+    <!-- Main website content -->
+    <div class="main-content" id="mainContent">
+        <h1>Welcome to the Hiring Service Website!</h1>
+        <p>Here you can hire talented Roblox developers.</p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const correctPassword = "letmein"; // CHANGE THIS to your actual password
+            const passwordScreen = document.getElementById('passwordScreen');
+            const mainContent = document.getElementById('mainContent');
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (input === correctPassword) {
+                passwordScreen.style.opacity = 0;
+                mainContent.classList.add('visible');
+                setTimeout(() => {
+                    passwordScreen.style.display = 'none';
+                }, 1000);
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
